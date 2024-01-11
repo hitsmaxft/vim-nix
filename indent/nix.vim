@@ -18,7 +18,7 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-let s:skip_syntax = '\%(Comment\|String\)$'
+let s:skip_syntax = '\%(nixComment\|Comment\|String\)$'
 let s:binding_open = '\%(\<let\>\)'
 let s:binding_close = '\%(\<in\>\)'
 let s:block_open  = '\%({\|[\)'
@@ -35,9 +35,9 @@ function! GetNixIndent()
 
   " Skip indentation for single line comments explicitly, in case a
   " comment was just inserted (eg. visual block mode)
-  if getline(v:lnum) =~ '^\s*#'
-    return indent(v:lnum)
-  endif
+  "if getline(v:lnum) =~ '^\s*#'
+  "  return indent(v:lnum)
+  "endif
 
   if synIDattr(synID(v:lnum, 1, 1), "name") !~ s:skip_syntax
     let current_line = getline(v:lnum)
